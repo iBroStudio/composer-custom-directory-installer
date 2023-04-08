@@ -1,0 +1,29 @@
+{
+  "name": "ibrostudio/composer-custom-directory-installer",
+  "type": "composer-plugin",
+  "license": "MIT",
+  "homepage": "https://github.com/iBroStudio/composer-custom-directory-installer",
+  "authors": [
+    {
+      "name": "iBroStudio",
+      "email": "hello@ibro.studio"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "IBroStudio\\ComposerCustomDirectoryInstaller\\": "src"
+    }
+  },
+  "extra": {
+    "class": "IBroStudio\\ComposerCustomDirectoryInstaller\\ComposerCustomDirectoryInstallerPlugin"
+  },
+  "require-dev": {
+    "composer/composer": "^2.2.12"
+  },
+  "require": {
+    "composer-plugin-api": "^2.0",
+    "php": "^8.2"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
