@@ -7,9 +7,9 @@ use Composer\Package\PackageInterface;
 
 class ComposerCustomDirectoryInstaller extends LibraryInstaller
 {
-    private array $config = [];
+    private Config $config;
 
-    public function supports($packageType): bool
+    public function supports(string $packageType): bool
     {
         return $packageType === 'custom-library';
     }
@@ -19,56 +19,22 @@ class ComposerCustomDirectoryInstaller extends LibraryInstaller
      */
     public function getInstallPath(PackageInterface $package): string
     {
-        $this->setConfigFrom($package);
+        $this->config = Config::load($package);
 
-        return $this->getBase() . DIRECTORY_SEPARATOR . $this->getDirectory($package->getPrettyName());
-    }
-
-    /**
-     * @throws \Exception
-     */
-    private function setConfigFrom(PackageInterface $package): void
-    {
-        $extra = $package->getExtra();
-
-        if (! array_key_exists('custom-directory-installer', $extra)) {
-            throw new \Exception('custom-directory-installer config is missing in extra section from composer.json');
-        }
-
-        $this->config = $extra['custom-directory-installer'];
+        return $this->getBase().DIRECTORY_SEPARATOR.$this->getDirectory($package->getPrettyName());
     }
 
     public function getBase(): string
     {
-        return $this->config['directory'];
+        return $this->config->directory;
     }
 
     public function getDirectory(string $name): string
     {
         return str_replace(
-            [$this->prefix(), $this->suffix()],
+            [$this->config->prefix, $this->config->suffix],
             '',
-            substr(strstr($name, '/'), 1)
+            substr((string) strstr($name, '/'), 1)
         );
-    }
-
-    private function prefix(): ?string
-    {
-        if (array_key_exists('name', $this->config)
-            && array_key_exists('prefix', $this->config['name'])) {
-            return $this->config['name']['prefix'];
-        }
-
-        return null;
-    }
-
-    private function suffix(): ?string
-    {
-        if (array_key_exists('name', $this->config)
-            && array_key_exists('suffix', $this->config['name'])) {
-            return $this->config['name']['suffix'];
-        }
-
-        return null;
     }
 }

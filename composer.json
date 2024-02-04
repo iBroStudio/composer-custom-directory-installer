@@ -9,21 +9,43 @@
       "email": "hello@ibro.studio"
     }
   ],
+  "require": {
+    "composer-plugin-api": "^2.0",
+    "php": "^8.2"
+  },
+  "require-dev": {
+    "composer/composer": "^2.2.12",
+    "laravel/pint": "^1.13",
+    "pestphp/pest": "^2.33",
+    "pestphp/pest-plugin-type-coverage": "^2.8",
+    "phpstan/phpstan": "^1.10"
+  },
   "autoload": {
     "psr-4": {
       "IBroStudio\\ComposerCustomDirectoryInstaller\\": "src"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "analyse": "vendor/bin/phpstan analyse -l 9 src",
+    "test": "vendor/bin/pest",
+    "test-coverage": "vendor/bin/pest --coverage",
+    "test-type-coverage": "vendor/bin/pest --type-coverage --min=100",
+    "format": "vendor/bin/pint"
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
   "extra": {
     "class": "IBroStudio\\ComposerCustomDirectoryInstaller\\ComposerCustomDirectoryInstallerPlugin"
   },
-  "require-dev": {
-    "composer/composer": "^2.2.12"
-  },
-  "require": {
-    "composer-plugin-api": "^2.0",
-    "php": "^8.2"
-  },
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "prefer-stable": true
 }
