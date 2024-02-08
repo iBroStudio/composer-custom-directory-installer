@@ -32,7 +32,12 @@ class ComposerCustomDirectoryInstaller extends LibraryInstaller
     public function getDirectory(string $name): string
     {
         return str_replace(
-            [$this->config->prefix, $this->config->suffix],
+            [
+                $this->config->prefix,
+                $this->config->suffix,
+                'laravel-',
+                'filament-',
+            ],
             '',
             substr((string) strstr($name, '/'), 1)
         );

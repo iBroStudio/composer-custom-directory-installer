@@ -87,4 +87,6 @@ For convenience and lisibility, you can specify the prefix and/or suffix in the 
     }
 }
 ```
-In these 3 examples, the package will be installed in /themes/my_project
+In these 3 examples, the package will be installed in /themes/my_project.
+
+**TIP:** *laravel-* and *filament-* are in-built prefixes, you don't have to include them.
