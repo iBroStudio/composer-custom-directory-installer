@@ -8,8 +8,8 @@ class Config
 {
     public function __construct(
         public readonly string $directory,
-        public readonly ?string $prefix,
-        public readonly ?string $suffix
+        public readonly ?string $prefix = null,
+        public readonly ?string $suffix = null
     ) {
     }
 
