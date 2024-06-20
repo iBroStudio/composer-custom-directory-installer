@@ -24,12 +24,12 @@ class ComposerCustomDirectoryInstaller extends LibraryInstaller
         return $this->getBase().DIRECTORY_SEPARATOR.$this->getDirectory($package->getPrettyName());
     }
 
-    public function getBase(): string
+    private function getBase(): string
     {
         return $this->config->directory;
     }
 
-    public function getDirectory(string $name): string
+    private function getDirectory(string $name): string
     {
         return str_replace(
             [

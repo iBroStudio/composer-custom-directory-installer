@@ -16,6 +16,7 @@
   "require-dev": {
     "composer/composer": "^2.2.12",
     "laravel/pint": "^1.13",
+    "mockery/mockery": "^1.6",
     "pestphp/pest": "^2.33",
     "pestphp/pest-plugin-type-coverage": "^2.8",
     "phpstan/phpstan": "^1.10"

@@ -3,6 +3,7 @@
 namespace IBroStudio\ComposerCustomDirectoryInstaller;
 
 use Composer\Package\PackageInterface;
+use IBroStudio\ComposerCustomDirectoryInstaller\Exceptions\MissingConfigException;
 
 class Config
 {
@@ -10,15 +11,17 @@ class Config
         public readonly string $directory,
         public readonly ?string $prefix = null,
         public readonly ?string $suffix = null
-    ) {
-    }
+    ) {}
 
+    /**
+     * @throws MissingConfigException
+     */
     public static function load(PackageInterface $package): Config
     {
         $extra = $package->getExtra();
 
         if (! array_key_exists('custom-directory-installer', $extra)) {
-            throw new \Exception('custom-directory-installer config is missing in extra section from composer.json');
+            throw new MissingConfigException();
         }
 
         return new self(...$extra['custom-directory-installer']);

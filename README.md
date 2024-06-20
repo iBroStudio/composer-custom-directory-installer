@@ -55,9 +55,7 @@ For convenience and lisibility, you can specify the prefix and/or suffix in the 
 "extra": {
     "custom-directory-installer": {
       "directory": "themes",
-      "name": {
-        "prefix": "theme-"
-      }
+      "prefix": "theme-"
     }
 }
 ```
@@ -68,9 +66,7 @@ For convenience and lisibility, you can specify the prefix and/or suffix in the 
 "extra": {
     "custom-directory-installer": {
       "directory": "themes",
-      "name": {
-        "suffix": "-theme"
-      }
+      "suffix": "-theme"
     }
 }
 ```
@@ -80,10 +76,8 @@ For convenience and lisibility, you can specify the prefix and/or suffix in the 
 "extra": {
     "custom-directory-installer": {
       "directory": "themes",
-      "name": {
-        "prefix": "platform-",
-        "suffix": "-theme"
-      }
+      "prefix": "platform-",
+      "suffix": "-theme"
     }
 }
 ```
